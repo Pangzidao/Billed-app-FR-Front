@@ -2,6 +2,12 @@ import { ROUTES_PATH } from '../constants/routes.js'
 import { formatDate, formatStatus } from "../app/format.js"
 import Logout from "./Logout.js"
 
+// added sort function to sort the bills from the earliest to the latest
+function sortByDateAsc(bills) {
+  return bills.sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
+
 export default class {
   constructor({ document, onNavigate, store, localStorage }) {
     this.document = document
@@ -33,8 +39,10 @@ export default class {
       .bills()
       .list()
       .then(snapshot => {
-        const bills = snapshot
-          .map(doc => {
+        //using the sorting function
+        const bills = sortByDateAsc(snapshot)
+        console.log(bills)
+          bills.map(doc => {
             try {
               return {
                 ...doc,
