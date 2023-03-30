@@ -86,6 +86,11 @@ export default class {
   }
 
   handleEditTicket(e, bill, bills) {
+    console.log(bill)
+    // If the clicked bill is already open, do nothing
+    if (this.id === bill.id) {
+      return
+    }
     if (this.counter === undefined || this.id !== bill.id) this.counter = 0
     if (this.id === undefined || this.id !== bill.id) this.id = bill.id
     if (this.counter % 2 === 0) {
@@ -105,6 +110,8 @@ export default class {
       $('.vertical-navbar').css({ height: '120vh' })
       this.counter ++
     }
+
+    
     $('#icon-eye-d').click(this.handleClickIconEye)
     $('#btn-accept-bill').click((e) => this.handleAcceptSubmit(e, bill))
     $('#btn-refuse-bill').click((e) => this.handleRefuseSubmit(e, bill))
@@ -148,7 +155,6 @@ export default class {
     bills.forEach(bill => {
       $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
     })
-
     return bills
 
   }
