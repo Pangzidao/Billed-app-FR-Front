@@ -86,11 +86,6 @@ export default class {
   }
 
   handleEditTicket(e, bill, bills) {
-    console.log(bill)
-    // If the clicked bill is already open, do nothing
-    if (this.id === bill.id) {
-      return
-    }
     if (this.counter === undefined || this.id !== bill.id) this.counter = 0
     if (this.id === undefined || this.id !== bill.id) this.id = bill.id
     if (this.counter % 2 === 0) {
@@ -152,11 +147,15 @@ export default class {
       this.counter ++
     }
 
-    bills.forEach(bill => {
-      $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
-    })
+    const currentFilteredBills = filteredBills(bills, getStatus(this.index));
+		currentFilteredBills.forEach((bill) => {
+			const openBill = document.getElementById(`open-bill${bill.id}`);
+      if (openBill){
+        openBill.removeEventListener('click', this.handleEditTicket);
+        openBill.addEventListener('click', (e) => this.handleEditTicket(e, bill, bills));
+      }
+		})
     return bills
-
   }
 
   getBillsAllUsers = () => {
