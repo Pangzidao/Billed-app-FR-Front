@@ -6,13 +6,15 @@ import { screen } from "@testing-library/dom"
 import NewBillUI from "../views/NewBillUI.js"
 import NewBill from "../containers/NewBill.js"
 
+console.log(NewBillUI)
 
 describe("Given I am connected as an employee", () => {
   describe("When I am on NewBill Page", () => {
-    test("Then ...", () => {
+    test("Then something", () => {
       const html = NewBillUI()
+      console.log(html)
       document.body.innerHTML = html
-      //to-do write assertion
+      expect(html).toBeTruthy(document.body.innerHTML)
     })
   })
 })
