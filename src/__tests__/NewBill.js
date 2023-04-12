@@ -12,9 +12,8 @@ describe("Given I am connected as an employee", () => {
   describe("When I am on NewBill Page", () => {
     test("Then something", () => {
       const html = NewBillUI()
-      console.log(html)
-      document.body.innerHTML = html
-      expect(html).toBeTruthy(document.body.innerHTML)
+      const form = screen.getAllByTestId("form-new-bill")
+      expect(form).toBeEqual(document.body.innerHTML)
     })
   })
 })
