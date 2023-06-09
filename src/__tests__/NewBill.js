@@ -17,6 +17,7 @@ import userEvent from '@testing-library/user-event'
 
 describe("Given I am connected as an employee", () => {
     describe("When I am on NewBill Page", () => {
+        // test inutile
         test("Then mail icon in vertical layout should be highlighted", async() => {
             Object.defineProperty(window, 'localStorage', { value: localStorageMock })
             window.localStorage.setItem('user', JSON.stringify({
