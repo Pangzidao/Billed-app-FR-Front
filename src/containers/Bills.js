@@ -2,7 +2,7 @@ import { ROUTES_PATH } from '../constants/routes.js'
 import { formatDate, formatStatus } from "../app/format.js"
 import Logout from "./Logout.js"
 
-// added sort function to sort the bills from the earliest to the latest
+// added sort function to sort the bills from the earliest to the latest TODO 1
 function sortByDateAsc(bills) {
   return bills.sort((a, b) => new Date(b.date) - new Date(a.date));
 }

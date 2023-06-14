@@ -19,7 +19,7 @@ export default class NewBill {
     e.preventDefault()
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
     
-    // Check if the file extension is jpg, jpeg, or png
+    // Check if the file extension is jpg, jpeg, or png TODO 3
     const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
     if (!allowedExtensions.exec(file.name)) {
       alert('Format du fichier invalide. Télécharger un fichier au format jpg, jpeg ou png')

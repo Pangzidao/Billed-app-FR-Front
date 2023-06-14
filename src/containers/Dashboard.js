@@ -146,7 +146,7 @@ export default class {
         .html("")
       this.counter ++
     }
-    // bug fix
+    // TODO 4 
     const currentFilteredBills = filteredBills(bills, getStatus(this.index));
 		currentFilteredBills.forEach((bill) => {
 			const openBill = document.getElementById(`open-bill${bill.id}`);

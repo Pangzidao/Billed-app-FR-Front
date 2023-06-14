@@ -10,30 +10,28 @@ import { localStorageMock } from "../__mocks__/localStorage.js";
 import Bills from '../containers/Bills.js'
 import router from "../app/Router.js";
 import mockStore from "../__mocks__/store"
+import '@testing-library/jest-dom/extend-expect';
+
 
 
 describe("Given I am connected as an employee", () => {
     describe("When I am on Bills Page", () => {
-        /*test("Then bill icon in vertical layout should be highlighted", async() => {
+        test("Then bill icon in vertical layout should be highlighted", async () => {
+
             Object.defineProperty(window, 'localStorage', { value: localStorageMock })
             window.localStorage.setItem('user', JSON.stringify({
-                type: 'Employee'
+              type: 'Employee'
             }))
             const root = document.createElement("div")
             root.setAttribute("id", "root")
             document.body.append(root)
-                // mock navigation et chargement page
-            const pathname = ROUTES_PATH['Bills']
-            root.innerHTML = ROUTES({ pathname: pathname, loading: true })
-            //document.getElementById('layout-icon1').classList.add('active-icon')
-            //document.getElementById('layout-icon2').classList.remove('active-icon')
-                // récupération de l'icône
+            router()
+            window.onNavigate(ROUTES_PATH.Bills)
             await waitFor(() => screen.getByTestId('icon-window'))
             const windowIcon = screen.getByTestId('icon-window')
-                //vérification si l'icône contient la classe active-icon
-            const iconActivated = windowIcon.classList.contains('active-icon')
-            expect(iconActivated).toBeTruthy()
-        })*/
+            expect(windowIcon).toHaveClass("active-icon"); //TODO 5
+      
+          })
         test("Then bills should be ordered from earliest to latest", () => {
             const html = BillsUI({ data: bills })
             document.body.innerHTML = html
